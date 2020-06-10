@@ -1,12 +1,15 @@
 import React from "react";
-import "./App.css";
-import Form from "./Form";
+// import "./App.css";
+import Form from "./Components/Form";
+import { Container } from "./Styles/Container";
+import Navigation from "./Components/Navigation";
 
 function App() {
   return (
-    <div>
+    <Container>
+      <Navigation />
       <Form />
-    </div>
+    </Container>
   );
 }
 
