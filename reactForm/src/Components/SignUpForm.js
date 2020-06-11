@@ -2,34 +2,16 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import { FormContainer, StyledButton } from "../Styles/FormStyle";
-
-const validNumber = [
-  "0803",
-  "0703",
-  "0908",
-  "0814",
-  "0806",
-  "0706",
-  "0903",
-  "0805",
-  "0807",
-];
-
-function maskCardPan(str) {
-  return str.replace(/(\d{4})/, "XXXX ");
-}
-
-function formatDate(str) {
-  let formatted = str.replace(/(\d{2})(\d{2})/, "$1 / $2");
-  return formatted;
-}
+import formatDate from "../Utils/formatDate";
+import maskCardPan from "../Utils/maskCardPan";
+import { validNumber } from "../Utils/validNumbers";
 
 const validate = (values) => {
   const errors = {};
   const isValidStart = values.phoneNumber.split("").splice(0, 4).join("");
   const passwordCheck = values.password;
-  let masterCheck = /^(?:5[1-5][0-9]{14})$/;
-  let visaCheck = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+  // let masterCheck = /^(?:5[1-5][0-9]{14})$/;
+  // let visaCheck = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
 
   //   Validates Full Name
   if (!values.fullName) {
@@ -81,6 +63,8 @@ const validate = (values) => {
   //   Validates Card Number (Master and Visa Card Only)
   if (!values.cardNumber) {
     errors.cardNumber = "please type in your 16-digit card number";
+  } else if (values.cardNumber.length < 19 || values.cardNumber.length > 19) {
+    errors.cardNumber = "16 digits";
   }
   //   else if (!(values.cardNumber.match(masterCheck) || values.cardNumber.match(visaCheck)) ) {
   //     errors.cardNumber = "Invalid Card Number or Type";
@@ -125,7 +109,6 @@ const SignUpForm = () => {
 
     // Redireccts to dashboard upon successful Validation
     onSubmit: () => {
-      console.log(formik.values);
       history.push("/dashboard");
     },
   });
@@ -270,7 +253,6 @@ const SignUpForm = () => {
         <StyledButton
           type="submit"
           onClick={() => {
-            console.log(formik.values);
             history.push("/dashboard");
           }}
         >

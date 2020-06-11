@@ -5,20 +5,20 @@ import { NavStyle } from "../Styles/NavStyle";
 const Navigation = () => (
   <NavStyle className="navigation">
     <div className="logo">
-      <a href="/">
+      <a>
         <img src={logo} alt="logo" />
       </a>
     </div>
     <div className="list-items-container">
       <ul className="list-items">
         <li className="list-item">
-          <a href="#">FAQ</a>
+          <a>FAQ</a>
         </li>
         <li className="list-item">
-          <a href="#">About</a>
+          <a>About</a>
         </li>
         <li className="list-item">
-          <a href="#">Sign in</a>
+          <a>Sign in</a>
         </li>
       </ul>
     </div>
