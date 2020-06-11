@@ -12,13 +12,13 @@ const Navigation = () => (
     <div className="list-items-container">
       <ul className="list-items">
         <li className="list-item">
-          <a href="/">FAQ</a>
+          <a href="#">FAQ</a>
         </li>
         <li className="list-item">
-          <a href="/">About</a>
+          <a href="#">About</a>
         </li>
         <li className="list-item">
-          <a href="/">Sign in</a>
+          <a href="#">Sign in</a>
         </li>
       </ul>
     </div>

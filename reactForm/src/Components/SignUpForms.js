@@ -10,7 +10,7 @@ import {
 const validNumber = [
   "0803",
   "0703",
-  "090",
+  "0908",
   "0814",
   "0806",
   "0706",
@@ -19,16 +19,21 @@ const validNumber = [
   "0807",
 ];
 
-function formatMask(str) {
+function maskCardPan(str) {
   return str.replace(/(\d{4})/, "XXXX ");
+}
+
+function formatDate(str) {
+  let formatted = str.replace(/(\d{2})(\d{2})/, "$1 / $2");
+  return formatted;
 }
 
 const validate = (values) => {
   const errors = {};
   const isValidStart = values.phoneNumber.split("").splice(0, 4).join("");
   const passwordCheck = values.password;
-  let master = /^(?:5[1-5][0-9]{14})$/;
-  let visa = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+  let masterCheck = /^(?:5[1-5][0-9]{14})$/;
+  let visaCheck = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
 
   //   Validates Full Name
   if (!values.fullName) {
@@ -78,13 +83,13 @@ const validate = (values) => {
     errors.confirmPassword = "confirm password must match password";
   }
 
-  //   Validates Card Number
+  //   Validates Card Number (Master and Visa Card Only)
 
   if (!values.cardNumber) {
-    errors.cardNumber = "please type in your card number";
+    errors.cardNumber = "please type in your 16-digit card number";
   }
-  //   else if () {
-  //     errors.confirmPassword = "confirm password must match password";
+  //   else if (!(values.cardNumber.match(masterCheck) || values.cardNumber.match(visaCheck)) ) {
+  //     errors.cardNumber = "Invalid Card Number or Type";
   //   }
 
   //   Validates Expiry Date
@@ -126,6 +131,7 @@ const SignUpForm = () => {
 
     // Redireccts to dashboard upon successful Validation
     onSubmit: () => {
+      console.log(formik.values);
       history.push("/dashboard");
     },
   });
@@ -220,14 +226,14 @@ const SignUpForm = () => {
 
           <div className="input-container">
             <input
-              className="short-input"
+              className="form-input"
               placeholder="card number"
               id="cardNumber"
               name="cardNumber"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formatMask(formik.values.cardNumber)}
+              value={maskCardPan(formik.values.cardNumber)}
             />
             {formik.touched.cardNumber && formik.errors.cardNumber ? (
               <div style={{ color: "red" }}>{formik.errors.cardNumber}</div>
@@ -236,14 +242,14 @@ const SignUpForm = () => {
 
           <div className="input-container">
             <input
-              className="shorter-input"
+              className="form-input"
               placeholder="expiry date"
               id="expiryDate"
               name="expiryDate"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.expiryDate}
+              value={formatDate(formik.values.expiryDate)}
             />
             {formik.touched.expiryDate && formik.errors.expiryDate ? (
               <div style={{ color: "red" }}>{formik.errors.expiryDate}</div>
@@ -267,7 +273,15 @@ const SignUpForm = () => {
           </div>
         </div>
 
-        <StyledButton type="submit">Submit</StyledButton>
+        <StyledButton
+          type="submit"
+          onClick={() => {
+            console.log(formik.values);
+            history.push("/dashboard");
+          }}
+        >
+          Submit
+        </StyledButton>
       </div>
     </FormContainer>
   );

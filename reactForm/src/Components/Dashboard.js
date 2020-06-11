@@ -4,7 +4,13 @@ import StyledDashboard from "../Styles/DashboardStyles";
 const Dashboard = () => {
   return (
     <StyledDashboard>
-      <h1 className="h1"> Welcome to Softcom 😁</h1>
+      <h1 className="h1">
+        {" "}
+        Welcome to Softcom{" "}
+        <span role="image" aria-label="open">
+          😁{" "}
+        </span>{" "}
+      </h1>
     </StyledDashboard>
   );
 };
