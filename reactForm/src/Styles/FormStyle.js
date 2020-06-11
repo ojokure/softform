@@ -22,7 +22,7 @@ export const FormContainer = styled.div`
       border-top-left-radius: 1rem;
       border-top-right-radius: 1rem;
       background: #0097cd;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.3rem;
       padding: 1.8rem 0;
 
       .form-title {
@@ -75,7 +75,7 @@ export const StyledButton = styled.button`
   border-radius: 5px;
   width: 50%;
   padding: 0.5em;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border: none;
   font-size: 1rem;
   text-align: center;
