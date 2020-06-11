@@ -19,26 +19,8 @@ const validNumber = [
   "0807",
 ];
 
-function formatMask(num) {
-  let output = "";
-  for (let i = 0; i < num.length; i++) {
-    if (i % 4 === 0) {
-      output += `${num[i]} `;
-    } else {
-      output += num[i];
-    }
-  }
-  return output;
-}
-
-function formatDate(date) {
-  let output = "";
-  for (let i = 0; i < date.length; i++) {
-    if (i % 1 == 0) {
-      output += `${date}/`;
-    }
-  }
-  return output;
+function formatMask(str) {
+  return str.replace(/(\d{4})/, "XXXX ");
 }
 
 const validate = (values) => {
@@ -125,7 +107,7 @@ const validate = (values) => {
 };
 
 const SignUpForm = () => {
-  let history = useHistory();
+  const history = useHistory();
 
   //   Initial values
   const formik = useFormik({
@@ -139,6 +121,7 @@ const SignUpForm = () => {
       expiryDate: "",
       pin: "",
     },
+
     validate,
 
     // Redireccts to dashboard upon successful Validation
@@ -146,6 +129,7 @@ const SignUpForm = () => {
       history.push("/dashboard");
     },
   });
+
   return (
     <FormContainer onSubmit={formik.handleSubmit}>
       <div className="form-card-container">
@@ -243,7 +227,7 @@ const SignUpForm = () => {
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              //   value={formatMask(formik.values.cardNumber)}
+              value={formatMask(formik.values.cardNumber)}
             />
             {formik.touched.cardNumber && formik.errors.cardNumber ? (
               <div style={{ color: "red" }}>{formik.errors.cardNumber}</div>
@@ -259,7 +243,7 @@ const SignUpForm = () => {
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              //   value={formatDate(formik.values.expiryDate)}
+              value={formik.values.expiryDate}
             />
             {formik.touched.expiryDate && formik.errors.expiryDate ? (
               <div style={{ color: "red" }}>{formik.errors.expiryDate}</div>
