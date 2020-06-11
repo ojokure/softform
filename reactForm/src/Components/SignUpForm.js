@@ -4,25 +4,14 @@ import { useFormik } from "formik";
 import { FormContainer, StyledButton } from "../Styles/FormStyle";
 import formatDate from "../Utils/formatDate";
 import maskCardPan from "../Utils/maskCardPan";
-
-const validNumber = [
-  "0803",
-  "0703",
-  "0908",
-  "0814",
-  "0806",
-  "0706",
-  "0903",
-  "0805",
-  "0807",
-];
+import { validNumber } from "../Utils/validNumbers";
 
 const validate = (values) => {
   const errors = {};
   const isValidStart = values.phoneNumber.split("").splice(0, 4).join("");
   const passwordCheck = values.password;
-  let masterCheck = /^(?:5[1-5][0-9]{14})$/;
-  let visaCheck = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+  // let masterCheck = /^(?:5[1-5][0-9]{14})$/;
+  // let visaCheck = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
 
   //   Validates Full Name
   if (!values.fullName) {

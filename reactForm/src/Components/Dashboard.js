@@ -7,9 +7,9 @@ const Dashboard = () => {
       <h1 className="h1">
         {" "}
         Welcome to Softcom{" "}
-        <span role="image" aria-label="open">
-          😁{" "}
-        </span>{" "}
+        <span role="image" aria-label="closed">
+          😁
+        </span>
       </h1>
     </StyledDashboard>
   );
