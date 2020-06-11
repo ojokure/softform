@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import SignUpForm from "./Components/SignUpForms";
+import SignUpForm from "./Components/SignUpForm";
 import Navigation from "./Components/Navigation";
 import Dashboard from "./Components/Dashboard";
 import { Container } from "./Styles/Container";
