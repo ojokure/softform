@@ -38,7 +38,7 @@ export const Container = styled.div`
 
   .form-card-container {
     background: white;
-    height: 27rem;
+    height: 33rem;
     width: 22em;
     display: flex;
     flex-direction: column;
@@ -52,7 +52,7 @@ export const Container = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: #4fad65;
+      background: #0097cd;
       border-top-left-radius: 1rem;
       border-top-right-radius: 1rem;
       padding: 1.8rem 0;
@@ -67,8 +67,9 @@ export const Container = styled.div`
   }
 
   .form-container {
-    height: 100%;
+    height: 80%;
     width: 100%;
+    justify-content: flex-start;
 
     .form {
       display: flex;
@@ -85,105 +86,18 @@ export const Container = styled.div`
 
     .form-input {
       border: none;
+      text-align: center;
+      justify-content: center;
       background: #f4f4f4;
       border-radius: 2rem;
-      width: 92%;
-      padding: 0.8rem;
+      width: 60%;
+      padding: 0.5rem;
+      padding-bottom: 0px;
       font-size: 1rem;
-      outline: none;
-      transition: ease-out 0.1s;
-      color: #848484;
 
       &:hover {
-        transition: ease-in 0.1s;
-        box-shadow: 0 2px 4px #d3d3d3;
-      }
-    }
-
-    .error {
-      padding: 0;
-      margin: 0;
-      color: red;
-      font-size: 0.8rem;
-    }
-
-    .options-container {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      margin: 0;
-    }
-
-    .remember-me {
-      display: flex;
-      align-items: center;
-
-      p {
-        margin-left: 0.3rem;
-        color: #6d6d6d;
-      }
-    }
-
-    .forgot-password {
-      text-decoration: none;
-      color: #4fad65;
-      transition: ease-out 0.2s;
-
-      &:hover {
-        color: #449156;
-        transition: ease-in 0.2s;
-      }
-    }
-
-    .form-button-container {
-      width: 100%;
-      margin-top: 0.5rem;
-      .form-button {
-        width: 100%;
-        border-radius: 2rem;
-        padding: 0.8rem;
+        /* box-shadow: 0 2px 4px #d3d3d3; */
       }
     }
   }
-
-  .alternate-form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0.7rem 0 0 0;
-
-    p {
-      font-size: 0.9rem;
-      color: #6d6d6d;
-      margin-bottom: 0;
-    }
-
-    a {
-      font-size: 1rem;
-      text-decoration: none;
-      color: #4fad65;
-      transition: ease-out 0.2s;
-
-      &:hover {
-        color: #449156;
-        transition: ease-in 0.2s;
-      }
-    }
-  }
-`;
-
-export const loadingButtonTheme = {
-  text: "#292d38",
-  background: "lightgray",
-};
-
-export const LoaderStyle = styled.div`
-  margin-right: 0.5rem;
-`;
-
-export const StyledLoader = styled.div`
-  margin-top: 45vh;
 `;

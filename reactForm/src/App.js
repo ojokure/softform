@@ -1,14 +1,16 @@
 import React from "react";
-// import "./App.css";
-import Form from "./Components/Form";
-import { Container } from "./Styles/Container";
+import { Route } from "react-router-dom";
+import SignUpForm from "./Components/SignUpForms";
 import Navigation from "./Components/Navigation";
+import Dashboard from "./Components/Dashboard";
+import { Container } from "./Styles/Container";
 
 function App() {
   return (
     <Container>
       <Navigation />
-      <Form />
+      <Route exact path="/" component={SignUpForm} />
+      <Route path="/dashboard" component={Dashboard} />
     </Container>
   );
 }
