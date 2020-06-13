@@ -31,7 +31,8 @@ export const validate = (values) => {
   } else if (!/^[0-9]+$/i.test(values.phoneNumber)) {
     errors.phoneNumber = "invalid phone number";
   } else if (!validNumber.includes(phoneNumberPrefix)) {
-    errors.phoneNumber = "Nigerian number without +234  e.g 0803.. ";
+    errors.phoneNumber =
+      "Nigerian number without +234  e.g 080,  070,  090 ...";
   } else if (values.phoneNumber.length < 11 || values.phoneNumber.length > 11) {
     errors.phoneNumber = "11 digits";
   }
