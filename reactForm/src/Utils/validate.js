@@ -9,11 +9,13 @@ export const validate = (values) => {
 
   // Validates Full Name
   if (!values.fullName) {
-    errors.fullName = "please type in your name";
+    errors.fullName = "please type in your full name";
   } else if (values.fullName.length < 5) {
-    errors.fullName = "name must be 2 characters or more";
+    errors.fullName = "name must be at least 2 characters";
   } else if (values.fullName.indexOf(" ") < 2) {
     errors.fullName = "please type in your last name";
+  } else if (values.fullName.charAt(values.fullName.length - 1) === " ") {
+    errors.fullName = "no white space at the end";
   }
 
   // Validates Email
