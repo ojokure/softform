@@ -45,6 +45,13 @@ export const FormContainer = styled.div`
         padding: 1rem 2rem 0 2rem;
       }
 
+      .error {
+        padding: 0;
+        margin: 0;
+        color: red;
+        font-size: 0.8rem;
+      }
+
       .input-container {
         width: 100%;
         height: 3.2rem;
