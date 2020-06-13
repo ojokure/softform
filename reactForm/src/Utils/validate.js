@@ -2,18 +2,20 @@ import { validNumber } from "./validNumbers";
 
 export const validate = (values) => {
   const errors = {};
-  const isValidStart = values.phoneNumber.split("").splice(0, 4).join("");
+  const phoneNumberPrefix = values.phoneNumber.split("").splice(0, 4).join("");
   const passwordCheck = values.password;
   // let masterCheck = /^(?:5[1-5][0-9]{14})$/;
   // let visaCheck = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
 
   // Validates Full Name
   if (!values.fullName) {
-    errors.fullName = "please type in your name";
+    errors.fullName = "please type in your full name";
   } else if (values.fullName.length < 5) {
-    errors.fullName = "name must be 2 characters or more";
+    errors.fullName = "name must be at least 2 characters";
   } else if (values.fullName.indexOf(" ") < 2) {
     errors.fullName = "please type in your last name";
+  } else if (values.fullName.charAt(values.fullName.length - 1) === " ") {
+    errors.fullName = "no white space at the end";
   }
 
   // Validates Email
@@ -28,8 +30,9 @@ export const validate = (values) => {
     errors.phoneNumber = "please type in your phone number";
   } else if (!/^[0-9]+$/i.test(values.phoneNumber)) {
     errors.phoneNumber = "invalid phone number";
-  } else if (!validNumber.includes(isValidStart)) {
-    errors.phoneNumber = "please type in a valid Nigerian number";
+  } else if (!validNumber.includes(phoneNumberPrefix)) {
+    errors.phoneNumber =
+      "Nigerian number without +234  e.g 080,  070,  090 ...";
   } else if (values.phoneNumber.length < 11 || values.phoneNumber.length > 11) {
     errors.phoneNumber = "11 digits";
   }
@@ -67,8 +70,8 @@ export const validate = (values) => {
   // Validates Expiry Date
   if (
     !values.expiryDate ||
-    values.expiryDate.length < 4 ||
-    values.expiryDate.length > 4
+    values.expiryDate.length < 7 ||
+    values.expiryDate.length > 7
   ) {
     errors.expiryDate = "please input date in MM/YY format";
   }

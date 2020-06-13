@@ -21,14 +21,14 @@ const SignUpForm = ({ history }) => {
 
     validate,
 
-    // Redireccts to dashboard upon successful Validation
-    onSubmit: (values) => {
+    // Redirects to dashboard upon successful Validation
+    onSubmit: () => {
       history.push("/dashboard");
     },
   });
 
   return (
-    <FormContainer onSubmit={formik.handleSubmit}>
+    <FormContainer>
       <div className="form-card-container">
         <div className="message-container">
           <h3 className="form-title"> Please fill in your details </h3>
@@ -46,7 +46,7 @@ const SignUpForm = ({ history }) => {
               value={formik.values.fullName}
             />
             {formik.touched.fullName && formik.errors.fullName ? (
-              <div style={{ color: "red" }}>{formik.errors.fullName}</div>
+              <div className="error">{formik.errors.fullName}</div>
             ) : null}
           </div>
           <div className="input-container">
@@ -61,7 +61,7 @@ const SignUpForm = ({ history }) => {
               value={formik.values.email}
             />
             {formik.touched.email && formik.errors.email ? (
-              <div style={{ color: "red" }}>{formik.errors.email}</div>
+              <div className="error">{formik.errors.email}</div>
             ) : null}
           </div>
 
@@ -77,7 +77,7 @@ const SignUpForm = ({ history }) => {
               value={formik.values.phoneNumber}
             />
             {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
-              <div style={{ color: "red" }}>{formik.errors.phoneNumber}</div>
+              <div className="error">{formik.errors.phoneNumber}</div>
             ) : null}
           </div>
 
@@ -93,7 +93,7 @@ const SignUpForm = ({ history }) => {
               value={formik.values.password}
             />
             {formik.touched.password && formik.errors.password ? (
-              <div style={{ color: "red" }}>{formik.errors.password}</div>
+              <div className="error">{formik.errors.password}</div>
             ) : null}
           </div>
 
@@ -109,9 +109,7 @@ const SignUpForm = ({ history }) => {
               value={formik.values.confirmPassword}
             />
             {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-              <div style={{ color: "red" }}>
-                {formik.errors.confirmPassword}
-              </div>
+              <div className="error">{formik.errors.confirmPassword}</div>
             ) : null}
           </div>
 
@@ -127,7 +125,7 @@ const SignUpForm = ({ history }) => {
               value={maskCardPan(formik.values.cardNumber)}
             />
             {formik.touched.cardNumber && formik.errors.cardNumber ? (
-              <div style={{ color: "red" }}>{formik.errors.cardNumber}</div>
+              <div className="error">{formik.errors.cardNumber}</div>
             ) : null}
           </div>
 
@@ -143,7 +141,7 @@ const SignUpForm = ({ history }) => {
               value={formatDate(formik.values.expiryDate)}
             />
             {formik.touched.expiryDate && formik.errors.expiryDate ? (
-              <div style={{ color: "red" }}>{formik.errors.expiryDate}</div>
+              <div className="error">{formik.errors.expiryDate}</div>
             ) : null}
           </div>
 
@@ -159,12 +157,14 @@ const SignUpForm = ({ history }) => {
               value={formik.values.pin}
             />
             {formik.touched.pin && formik.errors.pin ? (
-              <div style={{ color: "red" }}>{formik.errors.pin}</div>
+              <div className="error">{formik.errors.pin}</div>
             ) : null}
           </div>
         </div>
 
-        <StyledButton type="submit">Submit</StyledButton>
+        <StyledButton type="submit" onClick={formik.handleSubmit}>
+          Submit
+        </StyledButton>
       </div>
     </FormContainer>
   );
