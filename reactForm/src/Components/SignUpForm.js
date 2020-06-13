@@ -21,14 +21,14 @@ const SignUpForm = ({ history }) => {
 
     validate,
 
-    // Redireccts to dashboard upon successful Validation
-    onSubmit: (values) => {
+    // Redirects to dashboard upon successful Validation
+    onSubmit: () => {
       history.push("/dashboard");
     },
   });
 
   return (
-    <FormContainer onSubmit={formik.handleSubmit}>
+    <FormContainer>
       <div className="form-card-container">
         <div className="message-container">
           <h3 className="form-title"> Please fill in your details </h3>
@@ -164,7 +164,9 @@ const SignUpForm = ({ history }) => {
           </div>
         </div>
 
-        <StyledButton type="submit">Submit</StyledButton>
+        <StyledButton type="submit" onClick={formik.handleSubmit}>
+          Submit
+        </StyledButton>
       </div>
     </FormContainer>
   );

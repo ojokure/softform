@@ -67,8 +67,8 @@ export const validate = (values) => {
   // Validates Expiry Date
   if (
     !values.expiryDate ||
-    values.expiryDate.length < 4 ||
-    values.expiryDate.length > 4
+    values.expiryDate.length < 7 ||
+    values.expiryDate.length > 7
   ) {
     errors.expiryDate = "please input date in MM/YY format";
   }
